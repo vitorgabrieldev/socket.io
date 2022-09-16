@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+
+    <!-- ============================ Require Meta Tags ========================== -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ========== Temporary ======== -->
+    <title>I'm Vitor</title>
+
+    <!-- ============================ Require Scripts ============================= -->
+        <!-- ===== CDN Jquery ======= -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+        <!-- =========== CDN Socket.io ========== -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.2/socket.io.js"></script>
+
+</head>
+<body>
+    <!-- ============= Components ============ -->
+
+    <input type="text" id="username" placeholder="Digite seu username:">
+    <input type="button" value="Send" id="send">
+
+
+    <script type="text/javascript">
+
+        var socket = io("http://localhost:3000")
+
+        let send = document.querySelector('#send').addEventListener('click', () => {
+            let username = document.querySelector('#username').value;
+            if(username)
+            {
+                socket.emit('sendUsername', username);
+            };
+        });
+
+    </script>
+
+</body>
+</html>
